@@ -21,8 +21,10 @@ class DFA:
         )
 
     def simulate(self, word: str):
-        current_state = self.initial_state
-        for char in word: 
+      print(f"Simulating word: {word}")
+      
+      current_state = self.initial_state
+      for char in word: 
             if char not in self.alphabet:
                   raise ValueError(f"The following character is not in the alphabet: {char}")
 
@@ -34,23 +36,7 @@ class DFA:
             print(f"Current char: {char}\n"
                   f"Taking transition from state {key[0]} to {current_state}")
 
-        if current_state in self.final_states:
-              print("Your word has been accepted")
-        else:
-              print("Your word has not been accepted")
-              
-# DFA for regular expression a*b
-# q3 is used as a state that leads to nothing
-dfa = DFA(states={"q1", "q2", "q3"},
-          alphabet={"a", "b"},
-          transitions={("q1", "a"): "q1",
-           ("q1", "b"): "q2", 
-           ("q2", "a"): "q3",
-           ("q2", "b"): "q3", 
-           ("q3", "a"): "q3", 
-           ("q3", "b"): "q3"}, 
-           initial_state="q1", 
-           final_states={"q2"})
-
-print(dfa)
-dfa.simulate("aaab")
+      if current_state in self.final_states:
+            print("Your word has been accepted")
+      else:
+            print("Your word has not been accepted")
